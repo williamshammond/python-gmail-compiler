@@ -42,8 +42,8 @@ def start_page():
     style('{color:red;font-size:25px;}')
 
   with webpage:
-    h = h1("Message Digest for %s"%yester_date)
-    h["style"] = 'color:red;font-size:25px;'
+    h = h1('Message Digest for %s'%yester_date)
+    h['style'] = 'color:red;font-size:25px;'
     
     
 def make_preview(message):
@@ -88,15 +88,17 @@ def main():
         make_preview(item.messages[0])
     rebreaks = re.compile('#BR#') 
     webpage_final = rebreaks.sub('<br>', webpage.render())
-    filename = "test3.html"
+    filename = 'test5.html'
     file_path = os.path.join(directory, filename)
     if not os.path.isdir(directory):
         os.mkdir(directory)
-    file = open(file_path, "w")
+    file = open(file_path, 'w')
     file.write(webpage_final)
     file.close()
+    mark_as_read = input('Would you like to mark compiled emails as read? \'y\' to mark read')
+    if mark_as_read == 'y':
+        ezgmail.markAsRead(emails)
     
-
     
     
 if __name__ == "__main__":
