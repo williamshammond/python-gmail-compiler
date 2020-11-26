@@ -9,9 +9,9 @@ The script contains an optional link to an external css stylesheet 'style.css' i
 The style folder of this repository contains a template style.css file that must be stored in the same directory as the emailcompiler.py file.
 
 ### Styling
-The webpage can be displayed with only in-line styling:  
+>The webpage can be displayed with only in-line styling:  
 <img src="images/internalstyling.jpg" width="430" height="55" />  
-Which results in a mail summary that looks like this:  
+>Which results in a mail summary that looks like this:  
 <img src="images/webpagenostyling.jpg" width="650" height="375" />   
 
 Or with the external styling linked:  
