@@ -6,6 +6,7 @@
 <li>When run, emailcompiler.py creates an html webpage that displays summaries of all retrieved emails, downloads that html file in the specified directory in the user's computer, downloads any email attachments to that same directory (attachments linked in the html file), and prompts the user to decide whether or not to mark all compiled emails as read.</li>
 <li>If the user selects 'yes' the emails are marked as read.</li>
 </ul>  
+
 ### Set Up
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
 the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
