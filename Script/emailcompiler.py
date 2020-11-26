@@ -14,10 +14,10 @@ import os.path
 #suggested parameter 'newer_than:1d' to collect previous day's emails
 #suggested parameter 'to:YOUR_EMAIL' keeps sent mail from being added'
 #any parameters besides 'newer_than', 'to', and 'is' are added with OR operator and are non-exclusive
-params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:tstscrptemail@gmail.com']
+params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:#INSERT_EMAIL@gmail.com']
 
 #choose the directory where you want the html file and any downloaded attachments to be saved
-directory = '/Users/william/Desktop/EmailProject'
+directory = 'INSERT_DIRECTORY'
 
 
 def get_yesterday():
