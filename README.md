@@ -1,6 +1,6 @@
 # Gmail Email Compiler
 ### Function  
-+ The main script that provides the function of this project is **emailcompiler.py**
++ The main script that provides the function of this project is **emailcompiler.py** which
 	+ must be run from a directory of a user's computer that also contains the users *credentials.json* and *token.json* file   
 	(see **Set Up**)
 	+ contains a string directory which must be changed to indicate the user's desired location for the html files produced and atachments downloaded
@@ -16,7 +16,8 @@
 
 ### Set Up
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
-the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
+the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail) in order to enable the Gmail API for your gmail account and save. 
+the neccesary *credentials.json* and *token.json* files to your repository, shown below.
 
 >### Installation
 >To install with pip, run:
