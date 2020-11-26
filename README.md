@@ -4,8 +4,8 @@
 <li>A personal use script to compile my daily emails into a readable webpage.  </li>
 <li>emailcompiler.py requires changes to a list of search paramaters that the user chooses to curate their daily email brief.  </li>
 <li>When run, it creates an html webpage that displays summaries of all retrieved emails, downloads that html file in the specified directory in the user's computer, downloads any email attachments to that same directory (attachments linked in the html file), and prompts the user to decide whether or not to mark all compiled emails as read.</li>
-	<li>If the user selects 'yes' the emails are marked as read.</li>
-
+<li>If the user selects 'yes' the emails are marked as read.</li>
+</ul>
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
 The style folder of this repository contains a template style.css file that must be stored in the same directory as the emailcompiler.py file.
 
