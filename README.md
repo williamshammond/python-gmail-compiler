@@ -1,10 +1,11 @@
 # Gmail Email Compiler
 ### Function  
-The main script that provides the function of this project is **emailcompiler.py** 
-+ must be run from a directory of a user's computer that also contains the users *credentials.json* and *token.json* file (see **Set Up**)
-+ contains a string directory which must be changed to indicate the user's desired location for the html files produced and atachments downloaded
-	+ this directory can be the same directory as where emailcompiler.py is located or separate
-+ conatins a list of search paramaters that the user can change to curate their daily email brief.   
++ The main script that provides the function of this project is **emailcompiler.py**
+	+ must be run from a directory of a user's computer that also contains the users *credentials.json* and *token.json* file   
+	(see **Set Up**)
+	+ contains a string directory which must be changed to indicate the user's desired location for the html files produced and atachments downloaded
+		+ this directory can be the same directory as where emailcompiler.py is located or separate
+	+ conatins a list of search paramaters that the user can change to curate their daily email brief.   
 
 + When run, **emailcompiler.py** 
 	+ creates an html webpage that displays summaries of all retrieved emails
