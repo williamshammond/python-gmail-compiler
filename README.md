@@ -10,18 +10,19 @@
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
 the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
 
->Installation
-------------
+	Installation
+	------------
 
-To install with pip, run:
+	To install with pip, run:
 
-    pip install ezgmail
+    	pip install ezgmail
 
-You will need to download a *credentials-gmail.json* file by going to https://developers.google.com/gmail/api/quickstart/python and clicking the **Enable the Gmail API** button (after logging in to your Gmail account). You will need to rename the downloaded *credentials-gmail.json* file to *credentials.json*.
+	You will need to download a *credentials-gmail.json* file by going to https://developers.google.com/gmail/api/quickstart/python and clicking the **Enable the Gmail API** button (after logging in to your Gmail account). You will need to rename the downloaded *credentials-gmail.json* file to *credentials.json*.
 
-Once you have the *credentials.json* file, the first time you run ``import ezgmail`` it will bring up a window asking you to log in to your Gmail account and allow "Quickstart" to access it. A *token.json* file will be generated which your script can use to access your account.
+	Once you have the *credentials.json* file, the first time you run ``import ezgmail`` it will bring up a window asking you to log in to your Gmail account and allow "Quickstart" to access it. A *token.json* file will be generated which your script can use to access your account.
 
-Future calls to ``ezgmail.init()`` or any other ``ezgmail`` function won't require this token-generating step. The ``gmail.init()`` function is automatically called when any other ``ezgmail`` function is called.
+	Future calls to ``ezgmail.init()`` or any other ``ezgmail`` function won't require this token-generating step. The ``gmail.init()`` function is automatically called when any other ``ezgmail`` function is called.
+	
 ### Styling
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
 The style folder of this repository contains a template style.css file that must be stored in the same directory as the emailcompiler.py file.
