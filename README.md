@@ -5,4 +5,4 @@ emailcompiler.py requires changes to a list of search paramaters that the user c
 When run, it creates an html webpage that displays summaries of all retrieved emails, downloads that html file in the specified directory in the user's computer, downloads any email attachments to that same directory (attachments linked in the html file), and prompts the user to decide whether or not to mark all compiled emails as read. 
 If the user selects 'yes' the emails are marked as read. 
 
-![alt text](https://github.com/williamshammond/python-gmail-compiler/images/webpagenostyling.jpg)
+![alt text](https://github.com/williamshammond/python-gmail-compiler/main/images/webpagenostyling.jpg)
