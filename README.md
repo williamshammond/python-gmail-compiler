@@ -8,7 +8,7 @@ If the user selects 'yes' the emails are marked as read.
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
 The style folder of this repository contains a template style.css file that must be stored in the same directory as the emailcompiler.py file.
 
-###Styling
+### Styling
 The webpage can be displayed with only in-line styling:  
 <img src="images/internalstyling.jpg" width="430" height="55" />  
 Which results in a mail summary that looks like this:  
