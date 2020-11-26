@@ -11,20 +11,21 @@
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
 the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
 
-	To install with pip, run:
-
-    		pip install ezgmail
-
-	You will need to download a *credentials-gmail.json* file by going to https://developers.google.com/gmail/api/quickstart/python  
-	and clicking the **Enable the Gmail API** button (after logging in to your Gmail account). You will need to rename the downloaded  
-	*credentials-gmail.json* file to *credentials.json*.
-
-	Once you have the *credentials.json* file, the first time you run ``import ezgmail`` it will bring up a window asking you to log   
-	in to your Gmail account and allow "Quickstart" to access it. A *token.json* file will be generated which your script can use to  
-	access your account.
-
-	Future calls to ``ezgmail.init()`` or any other ``ezgmail`` function won't require this token-generating step. The ``gmail.init()``   
-	function is automatically called when any other ``ezgmail`` function is called.
+>### Installation
+>To install with pip, run:
+>
+>    	pip install ezgmail
+>
+> You will need to download a *credentials-gmail.json* file by going to https://developers.google.com/gmail/api/quickstart/python  
+> and clicking the **Enable the Gmail API** button (after logging in to your Gmail account). You will need to rename the downloaded 
+>*credentials-gmail.json* file to *credentials.json*.
+>
+>Once you have the *credentials.json* file, the first time you run ``import ezgmail`` it will bring up a window asking you to log   
+>in to your Gmail account and allow "Quickstart" to access it. A *token.json* file will be generated which your script can use to  
+>access your account.
+>
+>Future calls to ``ezgmail.init()`` or any other ``ezgmail`` function won't require this token-generating step. The ``gmail.init()``   
+>function is automatically called when any other ``ezgmail`` function is called.
 	
 ### Styling
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
@@ -38,6 +39,7 @@ The webpage can be displayed with extneral styling linked:
 Which (with the template style.css in this repository) results in a mail summary that looks like this:  
 <img src="images/webpagewithstyling.jpg" alt="WithStyling"
 	title="Withstyling" width="650" height="375" />   
+	
 Or with no external styling linked: 	
 ```python
   #with webpage.head:
