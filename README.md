@@ -6,3 +6,6 @@ When run, it creates an html webpage that displays summaries of all retrieved em
 If the user selects 'yes' the emails are marked as read. 
 
 ![alt text](Images/webpagenostyling.jpg)
+
+<img src="Images/webpagenostyling.jpg" alt="NoStyling"
+	title="NoStyling" width="150" height="100" />
