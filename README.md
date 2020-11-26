@@ -11,12 +11,9 @@
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
 the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
 
-	Installation
-	------------
-
 	To install with pip, run:
 
-    	pip install ezgmail
+    		pip install ezgmail
 
 	You will need to download a *credentials-gmail.json* file by going to https://developers.google.com/gmail/api/quickstart/python and clicking the **Enable the Gmail API** button (after logging in to your Gmail account). You will need to rename the downloaded *credentials-gmail.json* file to *credentials.json*.
 
