@@ -35,44 +35,63 @@ def get_emails():
   return yesterday_mail
 
 def start_page():
+  global webpage
+  webpage = dominate.document(title='Daily Email report')
+  with webpage.head:
+    #style('{color:red;font-size:25px;}')
+    link(rel='stylesheet', href='style.css')
+  with webpage:
+    h = h1("Message Digest for %s"%yester_date)
+    h["style"] = 'color:red;font-size:25px;'
+  webpage.render()
+  
+def start_page():
   global yester_date
   global webpage
   webpage = dominate.document(title='Daily Email report')
   with webpage.head:
-    style('{color:red;font-size:25px;}')
+    #style('{color:red;font-size:25px;}')
+    link(rel='stylesheet', href='style.css')
 
   with webpage:
     h = h1('Message Digest for %s'%yester_date)
     h['style'] = 'color:red;font-size:25px;'
+    h["link"] = 'style.css';
     
     
 def make_preview(message):
   global webpage
 
   link = re.compile('https\S*>') 
-  maintext = message.body
+  link_name = re.compile('(\S*?//)(\S*?)(/\S*)')
+  
+  main_text = message.body
 
-  linklist = link.findall(maintext)
-  mainpreview = maintext[:1000]
-  breaks = re.compile('\\r\\n') 
-  subbedpreview = breaks.sub('#BR#', mainpreview)
+  link_list = link.findall(main_text)
+  main_preview = main_text[:1000]
+  line_breaks = re.compile('\\r\\n') 
+  subbed_preview = line_breaks.sub('#BR#', main_preview)
+  
 
   sender = message.sender
   subject = message.subject
   time = message.timestamp.strftime('%H:%M:%S %a %y-%m-%d')
-  webpage += p(sender + ' at ' + time, style='color:green;font-size:15px')
-  webpage += p(subject, style='color:blue;font-size:15px')
-  webpage += p('Message preview:' + subbedpreview + '...', style ='color:black;font-size:12px;')
-  links_section = div('Message links:#BR#',style='color:#ff9900;font-size:12px;')
-  with links_section:
-    for link in linklist:
-      newlink = span('  ————  ', a(link[:-1], href = link[:-1]),'  ————  ')
-  webpage+= links_section
-  webpage+='#BR#'
+  webpage += p(sender + ' at ' + time, cls = 'sender', style='color:green;font-size:15px')
+  webpage += p(subject, cls = 'subject', style='color:blue;font-size:15px')
+  webpage += p('Message preview:' , cls = 'preview', style ='color:black;font-size:12px;')
+  webpage += div(subbed_preview + '...',cls = 'maintext', style ='color:black;font-size:15px;')
+  if(not len(link_list)==0):
+      links_section = div(p('Message links:#BR#'), cls = 'links', style='color:#ff9900;font-size:12px;')
+      with links_section:
+        for link in link_list:
+            lname = re.sub(link_name, r'\2',link)
+            newlink = span('— — — —  ', a(lname, href = link[:-1]),'  — — — —')
+      webpage+= links_section
+      webpage+='#BR#'
   attachments = message.attachments
   if(not len(attachments) == 0):
     message.downloadAllAttachments(downloadFolder = directory, overwrite = True)
-    attachments_section = div('Attachments:#BR#',style='color:#ff9900;font-size:12px;')
+    attachments_section = div(p('Attachments:#BR#'),cls = 'attachments', style='color:#ff9900;font-size:12px;')
     with attachments_section:
       for att in attachments:
         newatt = span('  ————  ', a(att, href = directory + '/' + att),'  ————  ')
@@ -88,14 +107,14 @@ def main():
         make_preview(item.messages[0])
     rebreaks = re.compile('#BR#') 
     webpage_final = rebreaks.sub('<br>', webpage.render())
-    filename = 'test5.html'
+    filename = '%s.html' %yester_date
     file_path = os.path.join(directory, filename)
     if not os.path.isdir(directory):
         os.mkdir(directory)
     file = open(file_path, 'w')
     file.write(webpage_final)
     file.close()
-    mark_as_read = input('Would you like to mark compiled emails as read? \'y\' to mark read')
+    mark_as_read = input('Would you like to mark compiled emails as read? \'y\' to mark read or \'n\' to leave unread')
     if mark_as_read == 'y':
         ezgmail.markAsRead(emails)
     
