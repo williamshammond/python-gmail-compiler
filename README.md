@@ -30,7 +30,15 @@ the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
 The style folder of this repository contains a template style.css file that must be stored in the same directory as the emailcompiler.py file.  
 
-The webpage can be displayed with only in-line styling:
+The webpage can be displayed with extneral styling linked:
+```python
+  with webpage.head:
+    link(rel='stylesheet', href='style.css')
+```  
+Which (with the template style.css in this repository) results in a mail summary that looks like this:  
+<img src="images/webpagewithstyling.jpg" alt="WithStyling"
+	title="Withstyling" width="650" height="375" />   
+Or with no external styling linked: 	
 ```python
   #with webpage.head:
     #link(rel='stylesheet', href='style.css')
@@ -38,11 +46,5 @@ The webpage can be displayed with only in-line styling:
 Which results in a mail summary that looks like this:  
 <img src="images/webpagenostyling.jpg" width="650" height="375" />   
 
-Or with the external styling linked:  
-```python
-  with webpage.head:
-    link(rel='stylesheet', href='style.css')
-```  
-Which (with the template style.css) results in this:  
-<img src="images/webpagewithstyling.jpg" alt="WithStyling"
-	title="Withstyling" width="650" height="375" />  
+ 
+
