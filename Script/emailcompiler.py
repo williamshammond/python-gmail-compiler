@@ -13,8 +13,8 @@ import os.path
 #choose search parameters for the email collection you would like to compile (examples below)
 #suggested parameter 'newer_than:1d' to collect previous day's emails
 #suggested parameter 'to:YOUR_EMAIL' keeps sent mail from being added'
-#any parameters besides 'newer_than' and 'to' are added with OR operator and are non-exclusive
-params = ['from:googlecommunityteam-noreply@google.com','from:no-reply@accounts.google.com','from:wsh2117@columbia.edu','newer_than:1d','to:tstscrptemail@gmail.com']
+#any parameters besides 'newer_than', 'to', and 'is' are added with OR operator and are non-exclusive
+params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:tstscrptemail@gmail.com']
 
 #choose the directory where you want the html file and any downloaded attachments to be saved
 directory = '/Users/william/Desktop/EmailProject'
@@ -30,7 +30,7 @@ def get_yesterday():
 def get_emails():
   query = ''
   for item in params:
-    if item[:2] == 'to' or item[:2] == 'ne':
+    if item[:2] == 'to' or item[:2] == 'ne' or item[:2] == 'is':
       query+= item + ' '
     else: query += 'OR ' + item + ' '
   yesterday_mail = ezgmail.search(query,maxResults=25)
