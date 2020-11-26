@@ -10,8 +10,9 @@ The style folder of this repository contains a template style.css file that must
 
 The webpage can be displayed with only in-line styling:
 
-<img src="Images/webpagenostyling.jpg" alt="NoStyling"
-	title="NoStyling" width="500" height="300" />
+<img src="Images/internalstyling.jpg" width="500" height="300" />
+
+<img src="Images/webpagenostyling.jpg" width="500" height="300" />
 
 Or with the external styling linked:
 
