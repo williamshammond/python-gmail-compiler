@@ -1,8 +1,17 @@
 # Gmail Email Compiler
 ### Function  
-+ **emailcompiler.py** requires changes to a list of search paramaters that the user chooses to curate their daily email brief.     
-+ When run, **emailcompiler.py** creates an html webpage that displays summaries of all retrieved emails, downloads that html file in the specified directory in the user's computer, downloads any email attachments to that same directory (attachments linked in the html file), and prompts the user to decide whether or not to mark all compiled emails as read.
-+ If the user selects 'yes' the emails are marked as read.  
+The main script that provides the function of this project is **emailcompiler.py** 
++ must be run from a directory of a user's computer that also contains the users *credentials.json* and *token.json* file (see **Set Up**)
++ contains a string directory which must be changed to indicate the user's desired location for the html files produced and atachments downloaded
+	+ this directory can be the same directory as where emailcompiler.py is located or separate
++ conatins a list of search paramaters that the user can change to curate their daily email brief.   
+
++ When run, **emailcompiler.py** 
+	+ creates an html webpage that displays summaries of all retrieved emails
+	+ saves that html file in the specified directory in the user's computer
+	+ downloads any email attachments to that same directory (attachments are linked to in the webpage)
+	+ prompts the user to decide whether or not to mark all compiled emails as read.
+	+ If the user selects 'yes' marks all retrieved emails as read.  
 
 ### Set Up
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
