@@ -26,6 +26,7 @@ the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown
 >
 >Future calls to ``ezgmail.init()`` or any other ``ezgmail`` function won't require this token-generating step. The ``gmail.init()``   
 >function is automatically called when any other ``ezgmail`` function is called.
+The user's credentials.json and token.json files should be saved in the same directory as the emailcompiler.py file.
 	
 ### Styling
 The script contains an optional link to an external css stylesheet 'style.css' if the user desires more flexible display styling.  
