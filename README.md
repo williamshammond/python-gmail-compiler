@@ -1,6 +1,9 @@
 # Gmail Email Compiler
++ A personal use script that compiles a user's daily emails which conform to desired filters and presents them in a readable webpage.
++ Built for Gmail users using the Gmail API
+
 ### Function  
-+ The main script that provides the function of this project is **emailcompiler.py** which
++ The script that compiles the user's emails is **emailcompiler.py** which
 	+ must be run from a directory of a user's computer that also contains the users *credentials.json* and *token.json* file   
 	(see **Set Up**)
 	+ contains a string directory which must be changed to indicate the user's desired location for the html files produced and atachments downloaded
