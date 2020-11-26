@@ -10,7 +10,7 @@
 In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
 the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail), shown below.
 
-Installation
+>Installation
 ------------
 
 To install with pip, run:
