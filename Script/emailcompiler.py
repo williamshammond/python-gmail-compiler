@@ -18,14 +18,10 @@ import webbrowser
 #suggested parameter 'newer_than:1d' to collect previous day's emails
 #suggested parameter 'to:YOUR_EMAIL' keeps sent mail from being added'
 #any parameters besides 'newer_than', 'to', and 'is' are added with OR operator and are non-exclusive
-#params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:#INSERT_EMAIL@gmail.com']
+params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:#INSERT_EMAIL@gmail.com']
 
 #choose the directory where you want the html file and any downloaded attachments to be saved
-#directory = 'INSERT_DIRECTORY'
-
-params = ['from:no-reply@piazza.com','from:acm2129@columbia.edu','from:notifications@instructure.com','from:mrc2198@columbia.edu','to:wsh2117@columbia.edu','newer_than:15d']
-directory = '/Users/william/Desktop/EmailProject'
-
+directory = 'INSERT_DIRECTORY'
 
 #returns a formatted string representing the date 24 hours before the script was executed
 def get_yesterday():
