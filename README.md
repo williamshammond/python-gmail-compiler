@@ -19,8 +19,7 @@
 	+ If the user selects 'yes' marks all retrieved emails as read.  
 
 ### Set Up
-In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of  
-the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail) (also shown below) in order to enable the Gmail API for your gmail account and save 
+In order to use the ezgmail module as part of this script, you will first have to follow the directions in the Installation section of the the [ezgmail GitHub repository](https://github.com/asweigart/ezgmail) (also shown below) in order to enable the Gmail API for your gmail account and save 
 the neccesary *credentials.json* and *token.json* files to your directory. 
 
 >### Installation
