@@ -12,8 +12,9 @@
 
 + When run, **emailcompiler.py** 
 	+ creates an html webpage that displays summaries of all retrieved emails
-	+ saves that html file in the specified directory in the user's computer
-	+ downloads any email attachments to that same directory (attachments are linked to in the webpage)
+	+ creates a subdirectory named for the date being summarized in the directory specified by the user
+	+ saves the html email summary file in the new subdirectory
+	+ downloads any email attachments to that same subdirectory (attachments are linked to in the webpage)
 	+ prompts the user to decide whether or not to mark all compiled emails as read.
 	+ If the user selects 'yes' marks all retrieved emails as read.  
 
