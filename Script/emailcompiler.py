@@ -18,12 +18,16 @@ import webbrowser
 #suggested parameter 'newer_than:1d' to collect previous day's emails
 #suggested parameter 'to:YOUR_EMAIL' keeps sent mail from being added'
 #any parameters besides 'newer_than', 'to', and 'is' are added with OR operator and are non-exclusive
-params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:#INSERT_EMAIL@gmail.com']
+#params = ['from:account@gmail.com','from:otheraccount@university.edu','subject:school','list:info@example.com','is:unread','newer_than:1d','to:#INSERT_EMAIL@gmail.com']
 
 #choose the directory where you want the html file and any downloaded attachments to be saved
-directory = 'INSERT_DIRECTORY'
+#directory = 'INSERT_DIRECTORY'
+
+params = ['from:no-reply@piazza.com','from:acm2129@columbia.edu','from:notifications@instructure.com','from:mrc2198@columbia.edu','to:wsh2117@columbia.edu','newer_than:15d']
+directory = '/Users/william/Desktop/EmailProject'
 
 
+#returns a formatted string representing the date 24 hours before the script was executed
 def get_yesterday():
     local_time = get_localzone()
     now_utc = datetime.now(local_time)
@@ -31,14 +35,15 @@ def get_yesterday():
     yester_date = yesterday.strftime('%A, %B %-d')
     return yester_date
 
+#returns a list of ezgmail GmailThread Objects
 def get_emails():
-  query = ''
-  for item in params:
-    if item[:2] == 'to' or item[:2] == 'ne' or item[:2] == 'is':
-      query+= item + ' '
-    else: query += 'OR ' + item + ' '
-  yesterday_mail = ezgmail.search(query,maxResults=25)
-  return yesterday_mail
+    query = ''
+    for item in params:
+        if item[:2] == 'to' or item[:2] == 'ne' or item[:2] == 'is':
+            query+= item + ' '
+        else: query += 'OR ' + item + ' '
+    yesterday_mail = ezgmail.search(query,maxResults=25)
+    return yesterday_mail
 
 def start_page():
   global webpage
@@ -59,11 +64,11 @@ def make_preview(message):
   global webpage
   main_text = message.body
   
-  link = re.compile('https\S*>') 
+  link_link = re.compile('https[^\s\]\)>]*') 
   link_name = re.compile('(\S*?//)(\S*?)(/\S*)')
   line_breaks = re.compile('\\r\\n') 
   
-  link_list = link.findall(main_text)
+  link_list = link_link.findall(main_text)
   main_preview = main_text[:1000] 
   subbed_preview = line_breaks.sub('#BR#', main_preview)
   
@@ -74,7 +79,7 @@ def make_preview(message):
   webpage += p(sender + ' at ' + time, cls = 'sender', style='color:green;font-size:15px')
   webpage += p(subject, cls = 'subject', style='color:blue;font-size:15px')
   webpage += p('Message preview:' , cls = 'preview', style ='color:black;font-size:12px;')
-  webpage += div(subbed_preview + '...',cls = 'maintext', style ='color:black;font-size:15px;')
+  webpage += div(subbed_preview + '...', cls = 'maintext', style ='color:black;font-size:15px;')
   
   #creates links section if there are links to display
   if(not len(link_list)==0):
@@ -82,14 +87,14 @@ def make_preview(message):
       with links_section:
         for link in link_list:
             lname = re.sub(link_name, r'\2',link)
-            newlink = span('— — — —  ', a(lname, href = link[:-1]),'  — — — —')
+            newlink = span('— — — —  ', a(lname, href = link),'  — — — —')
       webpage+= links_section
       webpage+='#BR#'
-  attachments = message.attachments
   
   #creates attachments section if there are any attachments to display
+  attachments = message.attachments
   if(not len(attachments) == 0):
-    message.downloadAllAttachments(downloadFolder = directory, overwrite = True)
+    message.downloadAllAttachments(downloadFolder = subdirectory, overwrite = True)
     attachments_section = div(p('Attachments:#BR#'),cls = 'attachments', style='color:#ff9900;font-size:12px;')
     with attachments_section:
       for att in attachments:
@@ -108,6 +113,7 @@ def main():
     filename = '%s.html' %yester_date
     if not os.path.isdir(directory):
         os.mkdir(directory)
+    global subdirectory
     subdirectory = os.path.join(directory + '/%s'%yester_date)
     if not os.path.isdir(subdirectory):
         os.mkdir(subdirectory)
@@ -116,6 +122,7 @@ def main():
     #Collects emails that fit user parameters and creates initial html text
     emails = get_emails()
     start_page()
+    
     
     #adds preview section for every email returned by get_emails()
     for item in emails:
@@ -137,8 +144,11 @@ def main():
         mark_as_read = input('Would you like to mark compiled emails as read? \'y\' to mark read or \'n\' to leave unread: ')
         if mark_as_read == 'y':
             ezgmail.markAsRead(emails)
-
-           
+            
+    #opens the webpage in the user's default browser        
+    webbrowser.open('file://' + os.path.join(subdirectory, filename))
+       
     
 if __name__ == "__main__":
     main()
+    
