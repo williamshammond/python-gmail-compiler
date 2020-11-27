@@ -7,8 +7,12 @@ import ezgmail
 from datetime import datetime, timedelta
 #tzlocal used to get local time to ensure that 'yesterday' is determined correctly
 from tzlocal import get_localzone
+#regex expressions for locating and modifying portions text
 import re
+#Used to modify directory pathnames
 import os.path
+#For opening the generated html file in default browser
+import webbrowser
 
 #choose search parameters for the email collection you would like to compile (examples below)
 #suggested parameter 'newer_than:1d' to collect previous day's emails
@@ -42,7 +46,7 @@ def start_page():
   
  #Optionally add link to external css for styling. Template style.css included in styling folder for download.
   with webpage.head:
-    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet',href= directory + '/style.css')
     #Save style.css in the same local directory that you assign to 'directory variable.
       
   with webpage:
@@ -89,15 +93,27 @@ def make_preview(message):
     attachments_section = div(p('Attachments:#BR#'),cls = 'attachments', style='color:#ff9900;font-size:12px;')
     with attachments_section:
       for att in attachments:
-        newatt = span('  ————  ', a(att, href = directory + '/' + att),'  ————  ')
+        newatt = span('  ————  ', a(att, href = subdirectory + '/' + att),'  ————  ')
     webpage+= attachments_section
     webpage+='#BR#'
     
 def main():
+    #Gets the appropriate date for yesterday
     global yester_date
-    
-    #Gets the appropriate day, collects emails that fit user parameters, and creates initial html text
     yester_date = get_yesterday()
+    
+    #names the html file with the date, checks if the target directory exists
+    #and creates one if it does not. Then checks if a subdirectory with the date
+    #exists and creates one if it does not.
+    filename = '%s.html' %yester_date
+    if not os.path.isdir(directory):
+        os.mkdir(directory)
+    subdirectory = os.path.join(directory + '/%s'%yester_date)
+    if not os.path.isdir(subdirectory):
+        os.mkdir(subdirectory)
+    file_path = os.path.join(subdirectory, filename)
+    
+    #Collects emails that fit user parameters and creates initial html text
     emails = get_emails()
     start_page()
     
@@ -110,12 +126,7 @@ def main():
     webpage_final = rebreaks.sub('<br>', webpage.render())
     
     
-    #names and writes the html file and saves it to the specified directory. 
-    #If specified directory does not exist then it is created
-    filename = '%s.html' %yester_date
-    file_path = os.path.join(directory, filename)
-    if not os.path.isdir(directory):
-        os.mkdir(directory)
+    #writes the file and saves it to its subdirectory
     file = open(file_path, 'w')
     file.write(webpage_final)
     file.close()
@@ -126,6 +137,7 @@ def main():
         mark_as_read = input('Would you like to mark compiled emails as read? \'y\' to mark read or \'n\' to leave unread: ')
         if mark_as_read == 'y':
             ezgmail.markAsRead(emails)
+
            
     
 if __name__ == "__main__":
